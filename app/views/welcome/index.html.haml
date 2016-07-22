@@ -1,0 +1,17 @@
+%h1 Welcome to Lunch Ordering application!
+%br/
+%section.authorization
+  %ul#myTabs.nav.nav-tabs.nav-justified{:role => "tablist"}
+    %li{:role => "presentation"}
+      %a{"aria-controls" => "sign-up", "aria-expanded" => "false",
+       "data-toggle" => "tab", :href => "#sign-up", :role => "tab"} Sign up
+    %li.active{:role => "presentation"}
+      %a{"aria-controls" => "sign-in", "aria-expanded" => "true",
+       "data-toggle" => "tab", :href => "#sign-in", :role => "tab"} Log in
+  #myTabContent.tab-content
+    #sign-up.tab-pane.fade{"aria-labelledby" => "sign-up-tab", :role => "tabpanel"}
+      .col-sm-6.col-sm-offset-3
+        = render template: "devise/registrations/new"
+    #sign-in.tab-pane.fade.active.in{"aria-labelledby" => "sign-in-tab", :role => "tabpanel"}
+      .col-sm-6.col-sm-offset-3
+        = render template: "devise/sessions/new"

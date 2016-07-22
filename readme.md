@@ -21,6 +21,7 @@
 ## Data
 
 **User**
+
 _has_many : orders_
 - email 
 - password
@@ -28,11 +29,13 @@ _has_many : orders_
 - admin
 
 **Product**
+
 _has_many : menus_
 - name
 - course
 
 **Menu**
+
 _belongs_to : product_
 _belongs_to : organizations_
 - price
@@ -40,15 +43,18 @@ _belongs_to : organizations_
 - period_to
 
 **Organizations**
+
 _has_many : menus_
 - name
 
 **Order**
+
 _belongs_to : user_
 _has_many : order_product_
 - date
 
 **OrderProducts**
+
 _belongs_to : order_
 _belongs_to : menu_
 
