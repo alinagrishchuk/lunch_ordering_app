@@ -32,7 +32,7 @@ _has_many : orders_
 
 _has_many : menus_
 - name
-- course
+- course_type
 
 **Menu**
 
