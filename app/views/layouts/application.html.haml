@@ -3,13 +3,13 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title LunchOrderingApp
+    %link{:href => "https://fonts.googleapis.com/css?family=Hammersmith+One", :rel => "stylesheet"}
+    %link{:href => "https://fonts.googleapis.com/css?family=Work+Sans", :rel => "stylesheet"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %p.notice
-      = notice
-    %p.alert
-      = alert
+    = render 'shared/header'
     .container
+      = render 'shared/flash'
       = yield

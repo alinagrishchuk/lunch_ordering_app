@@ -1,2 +1,103 @@
+@import 'normalize';
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+$black: rgba(0, 0, 0, 0.67);
+$dark: rgba(0,0,0,0.54);
+$light: #f7f9f9;
+$white: #FFFFFF;
+$highLight: #ff5252;
+
+* {
+  box-sizing: border-box;
+}
+
+/*********************************** typography */
+body {
+  color: $dark;
+  font-family: 'Work Sans', sans-serif;
+}
+
+@mixin upper-text {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+a {
+  color: $highLight;
+
+  &:hover {
+    text-decoration: none;
+    color: $highLight;
+  }
+
+  &.main-link {
+    @include upper-text;
+    &:hover {
+      color: darken($highLight, 10%);
+    }
+  }
+}
+
+.js-links-block {
+  a.disabled-link {
+    pointer-events: none;
+    -webkit-filter: opacity(40%);
+    filter: opacity(40%);
+  }
+
+  a.enabled-link {
+    pointer-events: auto;
+    -webkit-filter: opacity(100%);
+    filter: opacity(100%);
+  }
+}
+
+.padding-block {
+  padding: 15px;
+}
+
+/*********************************** header */
+
+.navbar {
+  .navbar-brand, .navbar-nav > li > a {
+    font-family: 'Hammersmith One', sans-serif;
+    @include upper-text;
+    &:hover {
+      color: $highLight;
+    }
+  }
+}
+
+/*********************************** authorization */
+.authorization {
+
+  /************* tabs */
+  #myTabs{
+    margin-bottom: 4rem;
+  }
+
+  .nav-tabs > li {
+    &.active > a {
+      color: $highLight;
+    }
+    a {
+      color: $dark;
+      @include upper-text;
+    }
+  }
+
+  /************* submit btn */
+  .btn {
+    color: #ff5252;
+    background-color: transparent;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    &:hover {
+      background-color: $light;
+    }
+  }
+}
