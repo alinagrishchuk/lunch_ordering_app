@@ -1,0 +1,9 @@
+/*********************************** calendar */
+#calendar {
+  td.fc-day {
+    &:hover {
+      cursor: pointer;
+      background-color: $light;
+    }
+  }
+}

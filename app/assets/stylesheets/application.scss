@@ -1,7 +1,7 @@
 @import 'normalize';
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+@import "fullcalendar";
 $black: rgba(0, 0, 0, 0.67);
 $dark: rgba(0,0,0,0.54);
 $light: #f7f9f9;
@@ -101,3 +101,7 @@ a {
     }
   }
 }
+
+@import "customization_calendar";
+
+
