@@ -1,9 +1,17 @@
 /*********************************** calendar */
 #calendar {
-  td.fc-day {
+  td.fc-day.fc-past,td.fc-day.fc-today {
     &:hover {
       cursor: pointer;
-      background-color: $light;
+      background-color: lighten($highLight,30%);
     }
+  }
+  div.fc-toolbar > div.fc-left > h2 {
+    color: $highLight;
+  }
+  div.fc-toolbar > div.fc-right > button {
+    color: $highLight;
+    font-weight: bold;
+    letter-spacing: 2px;
   }
 }

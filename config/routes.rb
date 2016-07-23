@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'menus/index'
 
+  get 'welcome/index'
   get 'welcome/dashboard'
 
   devise_for :users, :controllers => {:registrations => 'users/registrations'}

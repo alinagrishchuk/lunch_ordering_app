@@ -58,6 +58,32 @@ a {
   padding: 15px;
 }
 
+.title-text {
+  font-family: 'Hammersmith One', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+
+/*********************************** table */
+.table {
+  th {
+    color: $light;
+    background: $highLight;
+    @include upper-text;
+  }
+
+  tr {
+    &:hover {
+      color: $highLight;
+      background: $white;
+      cursor: pointer;
+    }
+  }
+
+}
+
 /*********************************** header */
 
 .navbar {
