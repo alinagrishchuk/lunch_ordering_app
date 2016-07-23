@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722174306) do
+ActiveRecord::Schema.define(version: 20160723080632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +26,28 @@ ActiveRecord::Schema.define(version: 20160722174306) do
     t.datetime "updated_at",                              null: false
   end
 
+  add_index "menus", ["date_from", "date_to"], name: "index_menus_on_date_from_and_date_to", using: :btree
   add_index "menus", ["organization_id"], name: "index_menus_on_organization_id", using: :btree
   add_index "menus", ["product_id"], name: "index_menus_on_product_id", using: :btree
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "order_products", ["menu_id"], name: "index_order_products_on_menu_id", using: :btree
+  add_index "order_products", ["order_id"], name: "index_order_products_on_order_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
@@ -64,4 +84,7 @@ ActiveRecord::Schema.define(version: 20160722174306) do
 
   add_foreign_key "menus", "organizations"
   add_foreign_key "menus", "products"
+  add_foreign_key "order_products", "menus"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "orders", "users"
 end
