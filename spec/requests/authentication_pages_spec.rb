@@ -1,7 +1,8 @@
 require 'rails_helper'
 
-describe 'Authentication', :type => :request do
+describe 'authentication & authorization', :type => :request do
   subject { page }
+  let(:title) { "Welcome to Lunch Ordering application!"}
 
   describe 'sign in' do
     before { visit  root_path }
@@ -40,5 +41,37 @@ describe 'Authentication', :type => :request do
         should have_content('Welcome!')
       end
     end
+  end
+
+  describe 'routing for different roles' do
+    describe 'with unauthorized user' do
+      before do
+        visit '/'
+      end
+      it 'should display authentication page' do
+        should have_content title
+      end
+    end
+
+    describe 'with authorized user' do
+      before do
+        login_as(create(:user), :scope => :user)
+        visit '/'
+      end
+      it 'should display authentication page' do
+        should have_selector('div.menu-calendar #calendar')
+      end
+    end
+
+    describe 'with authorized admin' do
+      before do
+        login_as(create(:admin), :scope => :user)
+        visit '/'
+      end
+      it 'should display authentication page' do
+        should have_content 'Users'
+      end
+    end
+
   end
 end

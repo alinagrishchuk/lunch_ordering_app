@@ -30,6 +30,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    Warden.test_reset!
   end
 
   config.infer_spec_type_from_file_location!

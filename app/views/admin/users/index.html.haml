@@ -1,0 +1,14 @@
+%h1 Users
+
+%table.table.table-bordered.table-striped.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Registered
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.name
+        %td= user.email
+        %td= user.created_at.strftime('%m/%d/%Y')
