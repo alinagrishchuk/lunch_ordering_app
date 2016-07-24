@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  namespace :admin do
-  get 'users/index'
-  end
-
   resources :orders, only: [:index, :create]
 
-  get 'menus/index'
+
+  resources :menus, only: [:index]
 
   get 'welcome/index'
   get 'welcome/dashboard'
@@ -15,7 +12,9 @@ Rails.application.routes.draw do
   authenticated :user, lambda { |user| user.admin? } do
     root 'admin/users#index', as: 'admin_root'
     namespace :admin do
-
+      #get 'orders/index', as: 'admin_orders'
+      resources :orders, only: [:index]
+      resources :users, only: [:index]
     end
   end
 

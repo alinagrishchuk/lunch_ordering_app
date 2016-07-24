@@ -1,0 +1,6 @@
+= render  partial: 'shared/modal_header', locals: { title: "Orders, #{params[:date]}" }
+.modal-body
+  - if @orders_with_total.orders.empty?
+    %p Orders are not exist!
+  - else
+    = render 'orders'

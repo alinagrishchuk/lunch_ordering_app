@@ -59,7 +59,7 @@ describe 'authentication & authorization', :type => :request do
         visit '/'
       end
       it 'should display authentication page' do
-        should have_selector('div.menu-calendar #calendar')
+        should have_selector('div.menus-calendar #calendar')
       end
     end
 

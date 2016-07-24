@@ -1,0 +1,4 @@
+$('#menu-modal').html("<%= escape_javascript(render  partial: 'admin/orders/index',
+                                                     layout: 'shared/modal',
+                                                     formats: [:html] ) %>");
+$('#menu-modal').modal('show');

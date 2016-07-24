@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :order_product do
-    order
+    order nil
     menu
   end
 end

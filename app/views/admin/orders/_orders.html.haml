@@ -1,0 +1,24 @@
+%h2= "Total launch cost is...  #{@orders_with_total.cost}"
+
+.row
+  .col-sm-12
+    .table-responsive
+      %table.table.table-bordered.table-striped.table-hover
+        %thead
+          %tr
+            %th Type
+            %th Product
+            %th Price
+            %th Name
+            %th email
+        %tbody
+          - @orders_with_total.orders.each do |order|
+            - order.menus.each do |menu|
+              %tr
+                %td= menu.course_type
+                %td= menu.name
+                %td= menu.price
+                %td= order.user.name
+                %td= order.user.email
+
+
