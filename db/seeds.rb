@@ -6,7 +6,7 @@ User.destroy_all
 100.times do |i|
   Product.create(
              name: Faker::Commerce.product_name,
-             course_type: rand(1..3)
+             course_type: rand(Product.course_types.length)
   )
 end
 

@@ -12,16 +12,41 @@ $highLight: #ff5252;
   box-sizing: border-box;
 }
 
+@mixin upper-text {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
 /*********************************** typography */
 body {
   color: $dark;
   font-family: 'Work Sans', sans-serif;
 }
 
-@mixin upper-text {
+/************* errors list */
+.hr {
+  width: 70%;
+  color: $dark;
+}
+
+/************* hr */
+.errors {
+  text-align: left;
+  color: #ff5252;
+}
+
+/************* submit btn */
+.btn {
+  color: #ff5252;
+  background-color: transparent;
+  width: 100%;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: bolder;
   letter-spacing: 2px;
+  &:hover {
+    background-color: $light;
+  }
 }
 
 a {
@@ -65,7 +90,6 @@ a {
 }
 
 
-
 /*********************************** table */
 .table {
   th {
@@ -80,6 +104,11 @@ a {
       background: $white;
       cursor: pointer;
     }
+  }
+  td.warning {
+    @include upper-text;
+    color: $dark;
+    font-size: 1.1rem;
   }
 
 }
@@ -114,18 +143,6 @@ a {
     }
   }
 
-  /************* submit btn */
-  .btn {
-    color: #ff5252;
-    background-color: transparent;
-    width: 100%;
-    text-transform: uppercase;
-    font-weight: bolder;
-    letter-spacing: 2px;
-    &:hover {
-      background-color: $light;
-    }
-  }
 }
 
 @import "customization_calendar";

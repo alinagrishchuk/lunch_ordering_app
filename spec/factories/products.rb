@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :product do
-    course_type 3
+    course_type 'drink'
     name 'fanta'
   end
 end

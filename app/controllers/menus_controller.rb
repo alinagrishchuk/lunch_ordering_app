@@ -3,6 +3,10 @@ class MenusController < ApplicationController
   respond_to :js
 
   def index
-    @menus = Menu.by_day(params[:date]).includes(:product)
+    @menus = Menu.find_by_day(params[:date]).group_by_type
+
+    @order = current_user.orders.build
+    3.times { @order.order_products.build}
+    @course_types = Product.course_types.invert
   end
 end

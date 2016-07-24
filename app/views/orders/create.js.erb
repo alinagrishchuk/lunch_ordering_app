@@ -1,0 +1,6 @@
+$("ul.errors").html("")
+<% @order.errors.messages.each do |_,messages| %>
+  <% messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message %>"));
+  <% end %>
+<% end %>

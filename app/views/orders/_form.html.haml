@@ -1,0 +1,12 @@
+%h2.text-center Create order
+.row
+  .col-sm-6.col-sm-offset-3
+    %ul.errors
+    = simple_form_for @order, remote: true do |m|
+      = m.hidden_field :date, :value => params[:date]
+      = m.simple_fields_for :order_products do |p|
+        - if @menus.key? @course_types[p.index]
+          = p.association :menu,  collection: @menus[@course_types[p.index]],
+                   label_method: :name, value_method: :id, include_blank: true,
+                   :label => @course_types[p.index]
+      = m.button :submit, :class => 'btn'

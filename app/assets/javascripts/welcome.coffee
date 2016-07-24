@@ -1,5 +1,6 @@
-$(document).on 'page:load ready', ->
-  calendar.init('#calendar')
+$(document).on 'page:update', ->
+  calendar.init('#calendar' )
+  console.log "calendar fire!"
    
 calendar = {
   init: (selector) ->
@@ -13,4 +14,4 @@ calendar = {
             dataType: 'script'
           });
     }
-}  
+}

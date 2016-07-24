@@ -1,0 +1,7 @@
+#myTabContent.tab-content
+  #sign-up.tab-pane.fade{"aria-labelledby" => "sign-up-tab", :role => "tabpanel"}
+    .col-sm-6.col-sm-offset-3
+      = render template: "devise/registrations/new"
+  #sign-in.tab-pane.fade.active.in{"aria-labelledby" => "sign-in-tab", :role => "tabpanel"}
+    .col-sm-6.col-sm-offset-3
+      = render template: "devise/sessions/new"

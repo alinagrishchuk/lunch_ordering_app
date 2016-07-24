@@ -1,0 +1,8 @@
+= render  partial: 'shared/modal_header', locals: { title: "Menu, #{params[:date]}" }
+.modal-body
+  - if @menus.empty?
+    %p Menu is empty
+  - else
+    = render 'menus'
+    %hr.hr
+    =render 'orders/form'
