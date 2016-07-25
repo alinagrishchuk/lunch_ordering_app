@@ -1,0 +1,10 @@
+$("ul.errors").html("")
+<% if @menu.errors.any? %>
+  <% @menu.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+$('.menus').prepend("<%=j render partial: 'menu', :locals => { :menu => @menu} %>");
+$("#new_menu")[0].reset();
+
+<% end %>

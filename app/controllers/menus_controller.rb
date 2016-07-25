@@ -7,6 +7,7 @@ class MenusController < ApplicationController
 
     @order = current_user.orders.build
     3.times { @order.order_products.build}
+
     @course_types = Product.course_types.invert
   end
 end

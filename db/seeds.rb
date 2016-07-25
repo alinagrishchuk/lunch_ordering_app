@@ -2,6 +2,7 @@ Order.destroy_all
 Menu.destroy_all
 Product.destroy_all
 User.destroy_all
+Organization.destroy_all
 
 100.times do |i|
   Product.create(
@@ -10,14 +11,21 @@ User.destroy_all
   )
 end
 
+20.times do
+  Organization.create!(name: Faker::Company.name )
+end
+
 Date.today.downto(Date.today - 40.days) do |day|
   products = Product.order('RANDOM()').limit(10)
+
   products.each do |product|
+    organization = Organization.order('RANDOM()').first
     Menu.create(
             price: Faker::Commerce.price,
             date_from: day,
             date_to: day,
-            product: product
+            product: product,
+            organization: organization
     )
   end
 end
@@ -41,7 +49,6 @@ primary_user = User.create!({ email:                  'test@example.com',
 
 end
 
-
 Date.today.downto(Date.today - 40.days) do |day|
   5.times do
     menu = Menu.order('RANDOM()').first
@@ -51,3 +58,4 @@ Date.today.downto(Date.today - 40.days) do |day|
     order.save!
   end
 end
+

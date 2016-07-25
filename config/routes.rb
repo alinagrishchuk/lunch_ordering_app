@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   resources :orders, only: [:index, :create]
-
-
   resources :menus, only: [:index]
 
+  resources :products, only: [:index]
   get 'welcome/index'
   get 'welcome/dashboard'
 
@@ -12,9 +11,9 @@ Rails.application.routes.draw do
   authenticated :user, lambda { |user| user.admin? } do
     root 'admin/users#index', as: 'admin_root'
     namespace :admin do
-      #get 'orders/index', as: 'admin_orders'
       resources :orders, only: [:index]
       resources :users, only: [:index]
+      resources :menus, only: [:index, :create]
     end
   end
 

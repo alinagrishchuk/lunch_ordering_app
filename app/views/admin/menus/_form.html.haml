@@ -1,0 +1,22 @@
+%ul.errors
+= simple_form_for [:admin, @menu], remote: true, html: { novalidate: false } do |f|
+  .row
+    .col-md-12
+      = f.input :course_type, required: true, collection: Product.course_types,  include_blank: false
+
+    .col-md-12
+      = f.input :name, required: true, input_html: { class: 'typeahead' }
+
+    .col-md-12
+      = f.association :organization,required: true,  include_blank: false
+
+    .col-md-12
+      = f.input :price, :input_html => { :type => 'text',
+                                         pattern: "[0-9]{1,5}(.[0-9]{0,2})?",
+                                         title: "Type price, please"}, required: true
+
+    .col-sm-5.pull-right
+      = f.button :submit
+    .col-sm-2.pull-right
+      = f.input :weekly, :as => :boolean, :label => 'Weekly?', :input_html => { :checked => false }
+

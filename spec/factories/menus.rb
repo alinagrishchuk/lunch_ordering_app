@@ -4,6 +4,6 @@ FactoryGirl.define do
     date_from Date.today
     date_to Date.today
     product
-    organization nil
+    organization
   end
 end

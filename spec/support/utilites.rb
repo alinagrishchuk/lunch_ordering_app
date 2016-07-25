@@ -6,3 +6,8 @@ def valid_signin(user)
     click_button 'Log in'
   end
 end
+
+def submit_form
+  find('input[type="submit"]').click
+  sleep 2
+end

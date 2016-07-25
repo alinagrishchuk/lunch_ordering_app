@@ -110,6 +110,9 @@ a {
     color: $dark;
     font-size: 1.1rem;
   }
+  i {
+    color: lighten($dark, 30%);
+  }
 
 }
 
@@ -146,5 +149,6 @@ a {
 }
 
 @import "customization_calendar";
+@import "typehead";
 
 
