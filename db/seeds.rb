@@ -59,3 +59,6 @@ Date.today.downto(Date.today - 40.days) do |day|
   end
 end
 
+5.times {
+  ApiKey.create!
+}

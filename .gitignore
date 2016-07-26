@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+config/application.yml
+spec/routing/
+spec/views/api_keys/

@@ -13,8 +13,14 @@
           - if current_user.admin?
             %li= link_to 'Orders', admin_orders_path
             %li= link_to 'Menu', admin_menus_path
+            %li= link_to 'Api', admin_api_keys_path
           - else
             %li= link_to 'Orders', orders_path
 
           %li= link_to 'Profile', edit_user_registration_path
           %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+
+    - else
+      .collapse.navbar-collapse
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path

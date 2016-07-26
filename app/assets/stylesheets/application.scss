@@ -105,11 +105,16 @@ a {
       cursor: pointer;
     }
   }
-  td.warning {
-    @include upper-text;
-    color: $dark;
-    font-size: 1.1rem;
+  td {
+    vertical-align: middle !important;
+
+    &.warning {
+      @include upper-text;
+      color: $dark;
+      font-size: 1.1rem;
+    }
   }
+
   i {
     color: lighten($dark, 30%);
   }

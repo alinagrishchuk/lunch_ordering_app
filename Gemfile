@@ -13,10 +13,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sprockets', '3.6.3'
 
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 gem 'faker'
 gem 'haml-rails', '~> 0.9'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'

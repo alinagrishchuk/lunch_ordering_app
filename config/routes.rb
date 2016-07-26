@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :orders, only: [:index, :create]
   resources :menus, only: [:index]
 
@@ -6,7 +7,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'welcome/dashboard'
 
-  devise_for :users, :controllers => {:registrations => 'users/registrations'}
+  devise_for :users, :controllers => {:registrations => 'users/registrations',
+                                      :omniauth_callbacks => "users/omniauth_callbacks"}
 
   authenticated :user, lambda { |user| user.admin? } do
     root 'admin/users#index', as: 'admin_root'
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
       resources :orders, only: [:index]
       resources :users, only: [:index]
       resources :menus, only: [:index, :create]
+      resources :api_keys, only: [:index, :create, :destroy]
     end
   end
 
@@ -25,4 +28,7 @@ Rails.application.routes.draw do
     root 'welcome#index', as: 'root'
   end
 
+  namespace :api do
+    resources :orders, only: [:index]
+  end
 end

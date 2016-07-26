@@ -1,0 +1,9 @@
+%tr
+  %td= api_key.id
+  %td= api_key.access_token
+  %td
+    .row
+      .col-sm-6
+        = link_to 'Destroy', admin_api_key_path(api_key), method: :delete, class: 'btn'
+      .col-sm-6
+        = link_to 'Try', api_orders_path(access_token: api_key.access_token, :format => :json ), class: 'btn'
