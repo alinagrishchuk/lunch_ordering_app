@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :order_products,
                                  reject_if: lambda { |p| p[:menu_id].blank? }
 
-  scope :with_products, -> { includes({  menus: [:product]  })}
+  scope :with_products, -> { includes({  menus: [:product, :organization]  })}
   scope :with_user, -> { includes(:user) }
   scope :with_user_and_products, ->  { with_user.with_products }
 

@@ -3,14 +3,16 @@
     %table.table.table-bordered.table-striped.table-hover
       %thead
         %tr
+          %th Organization
           %th Product
           %th Price
       %tbody
         - @course_types.each do |_,course_type|
           -if @menus.key? course_type
             %tr
-              %td.warning{colspan:2}=course_type
+              %td.warning{colspan:3}=course_type
               - @menus[course_type].each do |menu|
                 %tr
+                  %td= menu.organization.name
                   %td= menu.name
                   %td= menu.price

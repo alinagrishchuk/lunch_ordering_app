@@ -8,7 +8,6 @@ class Menu < ActiveRecord::Base
 
   delegate :name,         :to => :product
   delegate :course_type,  :to => :product
-  delegate :full_name,    :to => :product
 
   validates :price, :date_from, :date_to, :product, :organization_id, presence: true
   validates :price, :numericality => true,
@@ -17,10 +16,15 @@ class Menu < ActiveRecord::Base
 
   scope :find_by_day, ->(date) { where("date_from <= :date and date_to >= :date", date: date) }
   scope :group_by_type, -> { includes(:product).group_by { |menu| menu.course_type } }
-  scope :find_and_group, ->(date) {find_by_day(date).group_by_type }
+  scope :with_organization, -> { includes(:organization) }
+  scope :find_and_group, ->(date) {find_by_day(date).with_organization.group_by_type }
 
   def weekly
     self.date_from != self.date_to
+  end
+
+  def full_name
+    "#{organization.name},    #{name}"
   end
 
   def uniqueness_product_price

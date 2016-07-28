@@ -4,6 +4,7 @@
   %thead
     %tr
       %th Date
+      %th Organization
       %th Product
       %th Course type
       %th Price
@@ -12,6 +13,7 @@
       - order.order_products.each do |order_product|
         %tr
           %td= order.date
+          %td= order_product.menu.organization.name
           %td= order_product.menu.name
           %td= order_product.menu.course_type
           %td= order_product.menu.price

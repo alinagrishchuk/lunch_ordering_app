@@ -7,6 +7,6 @@
       = m.simple_fields_for :order_products do |p|
         - if @menus.key? @course_types[p.index]
           = p.association :menu,  collection: @menus[@course_types[p.index]],
-                   label_method: :name, value_method: :id, include_blank: true,
+                   label_method: :full_name, value_method: :id, include_blank: true,
                    :label => @course_types[p.index]
       = m.button :submit, :class => 'btn'
