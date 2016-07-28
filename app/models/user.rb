@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :orders
 
-
   scope :all_except, ->(user_id) { where.not(id: user_id) }
 
   validates :name, presence: true
@@ -9,7 +8,6 @@ class User < ActiveRecord::Base
   before_create do
     self.admin = true if User.count == 0
   end
-
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info

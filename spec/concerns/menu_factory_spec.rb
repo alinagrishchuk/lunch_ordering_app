@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe MenuFactory  do
-
   let!(:organization) { create(:organization) }
   let(:factory) { MenuFactory.new(menu) }
   let(:creating_a_menu) { -> { factory.create_menu } }

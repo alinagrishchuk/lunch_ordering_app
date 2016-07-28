@@ -1,7 +1,8 @@
 class OrdersSummarizer
   attr_reader :orders,:cost
-  def initialize orders
-    @orders = orders
+
+  def initialize date
+    @orders = Order.find_by_day_full(date)
     @cost =  @orders ? total_price : 0
   end
 

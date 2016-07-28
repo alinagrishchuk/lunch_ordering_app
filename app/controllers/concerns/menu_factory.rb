@@ -1,9 +1,7 @@
 class MenuFactory
-
-  def initialize(params)
-    @name, @type, @weekly = params[:name], params[:course_type].to_i, params[:weekly]
-    init_product
-    init_menu(params)
+  def initialize(source = nil)
+    @source = MenuFactorySource.new(source)
+    init_menu
   end
 
   def create_menu
@@ -11,32 +9,28 @@ class MenuFactory
     @menu
   end
 
+  def build_menu
+    @menu
+  end
+
   private
 
-    def init_product
-      @product = Product.where("name = ? and course_type = ?",
-                               @name, @type).
-          first_or_initialize(name: @name, course_type: @type)
+    def init_menu
+      @menu = @source.menu? ? Menu.new(@source.menu) : Menu.new
+      @menu.product = get_product
     end
 
-    def init_menu params
-      @menu  = Menu.new(params.slice(:price, :organization_id))
-      set_period
-    end
-
-    def set_period
-      if @weekly == '1'
-        @menu.date_from = Date.today
-        @menu.date_to = Date.today.sunday
+    def get_product
+      if @source.product?
+       Product.where("name = :name and course_type = :course_type",
+                     @source.product).
+            first_or_initialize(@source.product)
       else
-        @menu.date_from = @menu.date_to = Date.today
+        Product.new
       end
-
     end
 
     def save
-      @menu.product = @product
       @menu.save
     end
-
 end

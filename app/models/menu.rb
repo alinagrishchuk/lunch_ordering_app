@@ -13,11 +13,12 @@ class Menu < ActiveRecord::Base
   validates :price, :date_from, :date_to, :product, :organization_id, presence: true
   validates :price, :numericality => true,
                     :format => { :with => /\A\d{1,5}(\.\d{0,2})?\z/ }
-
   validate :uniqueness_product_price
 
   scope :find_by_day, ->(date) { where("date_from <= :date and date_to >= :date", date: date) }
   scope :group_by_type, -> { includes(:product).group_by { |menu| menu.course_type } }
+  scope :find_and_group, ->(date) {find_by_day(date).group_by_type }
+
   def weekly
     self.date_from != self.date_to
   end
@@ -26,7 +27,6 @@ class Menu < ActiveRecord::Base
     (date_from..date_to).each do |day|
       errors.add(:price, "already exists for #{day}") unless Menu.uniqueness?(self,day)
     end
-
   end
 
   def self.uniqueness? (menu,day)

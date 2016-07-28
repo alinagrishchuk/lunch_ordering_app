@@ -5,8 +5,7 @@ class Admin::OrdersController < ApplicationController
   def index
     respond_to do |format|
       format.js do
-        @orders_with_total =
-            OrdersSummarizer.new(Order.find_by_day_full(params[:date]) )
+        @orders_with_total = OrdersSummarizer.new(params[:date])
       end
       format.html {}
     end

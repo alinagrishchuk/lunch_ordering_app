@@ -1,13 +1,17 @@
 class MenusController < ApplicationController
   before_action :authenticate_user!
+  before_action :build_order, only: [:index]
   respond_to :js
 
   def index
-    @menus = Menu.find_by_day(params[:date]).group_by_type
-
-    @order = current_user.orders.build
-    3.times { @order.order_products.build}
-
-    @course_types = Product.course_types.invert
+    @menus = Menu.find_and_group(params[:date])
   end
+
+  private
+    def build_order
+      @order = current_user.orders.build
+      3.times { @order.order_products.build}
+
+      @course_types = Product.course_types.invert
+    end
 end

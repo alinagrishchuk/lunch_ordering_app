@@ -11,6 +11,7 @@ class Order < ActiveRecord::Base
   scope :with_user_and_products, ->  { with_user.with_products }
 
   scope :sort_by_date, -> { order(date: :desc) }
+  scope :sorted_with_product, -> { sort_by_date.with_products }
 
   scope :find_by_day, ->(date) { where('date = ?', date) }
   scope :find_by_day_full, ->(date) { find_by_day(date).with_user_and_products }

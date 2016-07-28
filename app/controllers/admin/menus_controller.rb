@@ -4,8 +4,7 @@ class Admin::MenusController < ApplicationController
 
   def index
     @menus = Menu.find_by_day(Date.today).includes([:product,:organization])
-    @menu = Menu.new
-    @menu.product = Product.new
+    @menu = MenuFactory.new.build_menu
   end
 
   def create

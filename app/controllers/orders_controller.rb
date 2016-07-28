@@ -2,9 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = current_user.orders.
-                           sort_by_date.
-                           with_products
+    @orders = current_user.orders.sorted_with_product
   end
 
   def create
@@ -15,9 +13,10 @@ class OrdersController < ApplicationController
     end
   end
 
-  def order_params
-    params.require(:order).
-        permit(:date, :order_products_attributes => [:menu_id])
-  end
 
+  private
+    def order_params
+      params.require(:order).
+          permit(:date, :order_products_attributes => [:menu_id])
+    end
 end

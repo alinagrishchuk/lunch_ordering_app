@@ -2,10 +2,12 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :create]
   resources :menus, only: [:index]
-
   resources :products, only: [:index]
-  get 'welcome/index'
-  get 'welcome/dashboard'
+
+  namespace :welcome do
+    get 'index'
+    get 'dashboard'
+  end
 
   devise_for :users, :controllers => {:registrations => 'users/registrations',
                                       :omniauth_callbacks => "users/omniauth_callbacks"}
