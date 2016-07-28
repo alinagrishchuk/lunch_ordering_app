@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :menus, only: [:index]
   resources :products, only: [:index]
 
-  namespace :welcome do
+ scope module: 'welcome' do
     get 'index'
-    get 'dashboard'
+    get 'dashboard', as: 'menus_list'
   end
 
   devise_for :users, :controllers => {:registrations => 'users/registrations',

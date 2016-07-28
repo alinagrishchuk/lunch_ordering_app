@@ -5,4 +5,4 @@
   - else
     = render 'menus'
     %hr.hr
-    =render 'orders/form'
+    = render 'orders/form' unless current_user.admin?

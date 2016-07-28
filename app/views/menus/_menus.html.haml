@@ -6,13 +6,16 @@
           %th Organization
           %th Product
           %th Price
+          %th Weekly
       %tbody
         - @course_types.each do |_,course_type|
           -if @menus.key? course_type
             %tr
-              %td.warning{colspan:3}=course_type
+              %td.warning{colspan:4}=course_type
               - @menus[course_type].each do |menu|
                 %tr
                   %td= menu.organization.name
                   %td= menu.name
                   %td= menu.price
+                  %td.text-center
+                    %i{class: " active glyphicon glyphicon-#{menu.weekly ? 'ok' : 'remove'}"}

@@ -11,10 +11,13 @@
       .collapse.navbar-collapse
         %ul.nav.navbar-nav.navbar-right
           - if current_user.admin?
+            %li= link_to 'Users', admin_users_path
             %li= link_to 'Orders', admin_orders_path
             %li= link_to 'Menu', admin_menus_path
+            %li= link_to 'Menus List', menus_list_path
             %li= link_to 'Api', admin_api_keys_path
           - else
+            %li= link_to 'Menu', root_path
             %li= link_to 'Orders', orders_path
 
           %li= link_to 'Profile', edit_user_registration_path
