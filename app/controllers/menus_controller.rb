@@ -1,5 +1,4 @@
 class MenusController < ApplicationController
-  before_action :authenticate_user!
   before_action :build_order, only: [:index]
   respond_to :js
 

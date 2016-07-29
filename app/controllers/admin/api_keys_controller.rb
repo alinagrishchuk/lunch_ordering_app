@@ -1,5 +1,4 @@
 class Admin::ApiKeysController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     @api_keys = ApiKey.all

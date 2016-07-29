@@ -1,8 +1,7 @@
+%h1.text-center.title-text Api keys
 .row
   .col-sm-8.col-sm-offset-2
-
     %section.create_api_key
-      %h1.text-center Api keys
       = button_to 'Create Api key', admin_api_keys_path, method: :post, class: 'btn'
 
     %br

@@ -10,6 +10,12 @@ RSpec.describe WelcomeController, type: :controller do
   end
 
   describe "GET #dashboard" do
+    let!(:user) { create(:user) }
+
+    before(:each) do
+      sign_in(user, :scope => :user)
+    end
+
     it "returns http success" do
       get :dashboard
       expect(response).to have_http_status(:success)
